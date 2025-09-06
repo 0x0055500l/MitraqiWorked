@@ -72,12 +72,13 @@ def save_state(state):
         json.dump(state, f)
 
 def tracking_loop():
+    global CHAT_ID
+    CHAT_ID = get_chat_id()
     if not CHAT_ID:
-        print("❌ No se pudo obtener chat_id desde las variables de entorno. Revisar configuración.")
-        # Salimos si no hay CHAT_ID para no correr infinitamente con errores.
+        print("❌ No se pudo obtener chat_id. Envía un mensaje al bot y reinicia.")
         return
 
-    print(f"✅ Worker activo, enviando a chat {CHAT_ID}")
+    print(f"✅ Bot activo, enviando a chat {CHAT_ID}")
     
     while True:
         last_state = load_state()
