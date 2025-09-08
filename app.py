@@ -6,7 +6,7 @@ import os
 
 # === Leemos TODAS las variables de entorno que configurarás en Koyeb ===
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-CHAT_ID = None
+CHAT_ID = os.getenv("CHAT_ID")
 TRACKING_PAYLOAD = os.getenv("TRACKING_PAYLOAD")
 API_TOKEN = os.getenv("API_TOKEN")
 
@@ -73,10 +73,10 @@ def save_state(state):
 
 def tracking_loop():
     global CHAT_ID
-    CHAT_ID = get_chat_id()
-    if not CHAT_ID:
-        print("❌ No se pudo obtener chat_id. Envía un mensaje al bot y reinicia.")
-        return
+    # CHAT_ID = get_chat_id()
+    # if not CHAT_ID:
+    #     print("❌ No se pudo obtener chat_id. Envía un mensaje al bot y reinicia.")
+    #     return
 
     print(f"✅ Bot activo, enviando a chat {CHAT_ID}")
     
